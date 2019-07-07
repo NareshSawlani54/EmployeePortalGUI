@@ -1,0 +1,63 @@
+<div class="empForm">
+  <h2 class="container">Employee Registration Form</h2>
+  <form id="employeeForm" class="container" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="firstName" placeholder="Enter First Name" [(ngModel)]="data" (ngModelChange)="employee.FirstName = $event">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="lastName" placeholder="Enter Last Name" [(ngModel)]="data1" (ngModelChange)="employee.LastName = $event">
+      </div>
+      <fieldset [ngModelOptions]="{standalone: true}" class="form-group" [(ngModel)]="data2" (ngModelChange)="employee.Gender = $event">
+        <label>Gender</label>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="data7" (ngModelChange)="employee.Gender = $event" type="radio" class="form-check-input" name="optionsRadios" id="male" value="MALE" checked=""> Male
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="data8" (ngModelChange)="employee.Gender = $event" type="radio" class="form-check-input" name="optionsRadios" id="female" value="FEMALE"> Female
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input [ngModel]="defaultDate | date:'yyyy-MM-dd'" type="date" name="defaultDate" class="form-control" id="dob" placeholder="Enter Date of Birth" (ngModelChange)="employee.Dob = $event">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleSelect1">Department</label>
+        <select [ngModelOptions]="{standalone: true}"class="form-control" id="exampleSelect1" [(ngModel)]="data4" (ngModelChange)="employee.Department = $event">
+          <option [ngValue]="department" *ngFor = "let department of departments">{{department.name}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+  </form>
+</div>
+
+
+
+<div class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
