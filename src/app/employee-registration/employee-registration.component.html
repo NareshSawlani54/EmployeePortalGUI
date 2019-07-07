@@ -10,11 +10,11 @@
         <label for="lastName">Last Name</label>
         <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="lastName" placeholder="Enter Last Name" [(ngModel)]="data1" (ngModelChange)="employee.LastName = $event">
       </div>
-      <fieldset [ngModelOptions]="{standalone: true}" class="form-group" [(ngModel)]="data2" (ngModelChange)="employee.Gender = $event">
+      <fieldset class="form-group">
         <label>Gender</label>
         <div class="form-check">
           <label class="form-check-label">
-            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="data7" (ngModelChange)="employee.Gender = $event" type="radio" class="form-check-input" name="optionsRadios" id="male" value="MALE" checked=""> Male
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="data7" (ngModelChange)="employee.Gender = $event" type="radio" class="form-check-input" name="optionsRadios" id="male" value="MALE"> Male
           </label>
         </div>
         <div class="form-check">
@@ -31,7 +31,7 @@
 
       <div class="form-group">
         <label for="exampleSelect1">Department</label>
-        <select [ngModelOptions]="{standalone: true}"class="form-control" id="exampleSelect1" [(ngModel)]="data4" (ngModelChange)="employee.Department = $event">
+        <select [ngModelOptions]="{standalone: true}"class="form-control" name = "departmentSelect" id="exampleSelect1" [(ngModel)]="defaultDepartment" (ngModelChange)="employee.Department = $event">
           <option [ngValue]="department" *ngFor = "let department of departments">{{department.name}}</option>
         </select>
       </div>

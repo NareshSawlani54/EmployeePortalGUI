@@ -13,15 +13,19 @@ export class EmployeeRegistrationComponent implements OnInit {
 
   public employee: Employee;
   public departments: Department[];
-  public defaultDate : string = "1989-06-23";
+  public defaultDate : string;
+  public defaultDepartment : Department;
 
   constructor(private employeeService: EmployeeService) {
-    this.employee = new Employee;
+    this.employee = new Employee();
+    this.defaultDate = "1989-06-23";
   }
 
   ngOnInit() {
     this.employeeService.loadDepartments().subscribe(departmentsArray => {
       this.departments = <Department[]>departmentsArray;
+      this.defaultDepartment = <Department>departmentsArray[0];
+      this.employee.Department = this.defaultDepartment;
       console.log(departmentsArray);
     });
   }
@@ -32,7 +36,6 @@ export class EmployeeRegistrationComponent implements OnInit {
       if(response instanceof HttpErrorResponse) {
 
       } else {
-
       }
       console.log(response);
     });
