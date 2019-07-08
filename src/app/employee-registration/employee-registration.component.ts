@@ -15,6 +15,8 @@ export class EmployeeRegistrationComponent implements OnInit {
   public departments: Department[];
   public defaultDate : string;
   public defaultDepartment : Department;
+  public showResponse : boolean = false;
+  public response : string = "";
 
   constructor(private employeeService: EmployeeService) {
     this.employee = new Employee();
@@ -34,8 +36,13 @@ export class EmployeeRegistrationComponent implements OnInit {
     console.log(this.employee);
     this.employeeService.saveEmployee(this.employee).subscribe(response => {
       if(response instanceof HttpErrorResponse) {
-
+        
       } else {
+        this.response = <string>response;
+        this.showResponse = true;
+        setTimeout(() => {
+          this.showResponse = false;
+        },2500);
       }
       console.log(response);
     });

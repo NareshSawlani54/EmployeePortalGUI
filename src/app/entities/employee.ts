@@ -8,6 +8,10 @@ export class Employee {
     private dob: string;
     private department: Department;
 
+    constructor() {
+        this.dob = "1989-06-23";
+        this.gender = "MALE";
+    }
 
     get FirstName(): string {
         return this.firstName;
